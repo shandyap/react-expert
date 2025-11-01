@@ -72,3 +72,5 @@ describe('authUserReducer function', () => {
     expect(nextState).toBeNull();
   });
 });
+
+// Test
