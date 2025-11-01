@@ -1,21 +1,25 @@
 name: Continuous Integration
- 
+
 on:
   pull_request:
     branches:
-      - master
- 
+      - main  # PENTING: Pastikan ini nama branch utama Anda (main atau master)
+
 jobs:
   automation-test-job:
     runs-on: ubuntu-latest
- 
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@v4 # Versi lebih baru
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v4 # Versi lebih baru
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install and test
+          node-version: '18.x' # Gunakan versi spesifik, BUKAN matrix
+          cache: 'npm' # Menambahkan cache untuk instalasi lebih cepat
+
+      - name: Install dependencies and run test
         run: |
           npm install
-          npm run ci:test
+          npm run test # Ganti ini ke "npm run ci:test" jika skrip Anda berbeda
