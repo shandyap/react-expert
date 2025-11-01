@@ -26,7 +26,7 @@ describe('authUserReducer function', () => {
     const nextState = authUserReducer(initialState, action);
 
     // Assert
-    expect(nextState).toBe('Bismillah GAGAL!');
+    expect(nextState).toBe(initialState);
   });
 
   // Test Case 2: SET_AUTH_USER (Login)
